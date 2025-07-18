@@ -1,3 +1,5 @@
+# 학습한 모델이 잘 작동되는지 확인하는 코드
+
 import torch
 import torch.nn as nn
 from torchvision import datasets, transforms, models
@@ -7,7 +9,7 @@ from PIL import Image
 
 # 아래는 val 데이터 테스트해서 정확도 얼마나 나오는지 확인하는 함수
 def test_val(_classes, _model, _transform):
-    data_dir = 'resource/train'
+    data_dir = 'resources/train'
     batch_size = 32
 
     dataset = datasets.ImageFolder(data_dir, transform=_transform)
@@ -148,6 +150,6 @@ if __name__ == '__main__':
     if(여러개_테스트):
         test_val(classes, model, transform)
     else:
-        test_img_path = 'resource/test.png'  # ← 테스트할 이미지 경로
+        test_img_path = 'resources/test.png'  # ← 테스트할 이미지 경로
         img_tensor = preprocess_image(test_img_path, transform)
         predict_topk(model, img_tensor, classes, device, k=5)
